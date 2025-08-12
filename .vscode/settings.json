@@ -1,6 +1,6 @@
 {
     "rust-analyzer.rustfmt.overrideCommand": [
-        "leptosfmt",
+        "/home/sus/.cargo/bin/leptosfmt",
         "--stdin",
         "--rustfmt"
     ],
