@@ -1,10 +1,15 @@
 use leptos::prelude::*;
 
-use crate::components::{file_browser::FileBrowser, sidebar::Sidebar};
+use crate::{
+    components::{file_browser::FileBrowser, file_reader::FileReader, sidebar::Sidebar},
+    state::current_file::CurrentFile,
+};
 
 /// Default Page
 #[component]
 pub fn Reader() -> impl IntoView {
+    let current_file = use_context::<CurrentFile>().unwrap();
+
     view! {
         <ErrorBoundary fallback=|errors| {
             view! {
@@ -27,7 +32,10 @@ pub fn Reader() -> impl IntoView {
             <div class="reader">
                 <Sidebar />
                 <div class="pdf-reader">
-                    <FileBrowser />
+                    {move || match current_file.filename.get() {
+                        Some(filename) => view! { <FileReader filename=filename /> }.into_any(),
+                        None => view! { <FileBrowser /> }.into_any(),
+                    }}
                 </div>
             </div>
         </ErrorBoundary>

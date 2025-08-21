@@ -2,24 +2,24 @@ use leptos::prelude::*;
 use leptos::wasm_bindgen::prelude::*;
 use leptos::web_sys::{Event, File, FileReader, HtmlInputElement};
 
+use crate::state::current_file::CurrentFile;
 use crate::state::recent_files::RecentFiles;
 
 #[component]
 pub fn FileBrowser() -> impl IntoView {
     let recent = use_context::<RecentFiles>().unwrap();
+    let current_file = use_context::<CurrentFile>().unwrap();
 
     let (file_content, set_file_content) = signal(None);
     let on_file_change = move |ev: Event| {
         let input = event_target::<HtmlInputElement>(&ev);
         if let Some(file) = input.files().and_then(|files| files.get(0)) {
             recent.add(file.name());
+            current_file.set(file.name());
             read_file_to_string(&file, set_file_content);
         }
     };
-    view! {
-        <input type="file" on:change=on_file_change />
-        <p>{move || file_content.get()}</p>
-    }
+    view! { <input type="file" on:change=on_file_change /> }
 }
 
 fn read_file_to_string(file: &File, set_content: WriteSignal<Option<String>>) {
