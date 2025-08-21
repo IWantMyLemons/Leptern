@@ -9,9 +9,18 @@
 
 /* ------------------------------------------------------------ */
 
+$theme-background: #242226;
+$theme-surface: #2E2B32;
+$theme-text: #D0C2DE;
+$theme-accent: #7F35B4;
+
 body {
+  background-color: $theme-background;
+  color: $theme-text;
   font-family: sans-serif;
   text-align: center;
+  height: 100%;
+  margin: 0px;
 }
 
 .container {
@@ -49,4 +58,17 @@ button {
   margin-right: auto;
   text-align: center;
   margin: 2rem;
+}
+
+.reader {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  .sidebar {
+    background-color: $theme-surface;
+    width: 250px;
+  }
+  .pdf-reader {
+    flex-grow: 1;
+  }
 }

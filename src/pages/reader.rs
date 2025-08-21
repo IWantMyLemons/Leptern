@@ -1,6 +1,6 @@
 use leptos::prelude::*;
 
-use crate::components::file_browser::FileBrowser;
+use crate::components::{file_browser::FileBrowser, sidebar::Sidebar};
 
 /// Default Page
 #[component]
@@ -24,9 +24,11 @@ pub fn Reader() -> impl IntoView {
                 </ul>
             }
         }>
-
-            <div class="container">
-                <FileBrowser />
+            <div class="reader">
+                <Sidebar />
+                <div class="pdf-reader">
+                    <FileBrowser />
+                </div>
             </div>
         </ErrorBoundary>
     }
