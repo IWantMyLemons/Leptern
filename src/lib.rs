@@ -5,12 +5,13 @@ use leptos_router::{components::*, path};
 // Modules
 mod components;
 mod pages;
+mod repositories;
 mod state;
 
 // Top-Level pages
 use crate::{
     pages::{not_found::NotFound, reader::Reader},
-    state::recent_files::RecentFiles,
+    state::{current_file::CurrentFile, recent_files::RecentFiles},
 };
 
 /// An app router which renders the homepage and handles 404's
@@ -21,6 +22,9 @@ pub fn App() -> impl IntoView {
 
     // Provides context for managing recent files
     provide_context(RecentFiles::new());
+
+    // Provides context for managing the current file
+    provide_context(CurrentFile::new());
 
     view! {
         <Html attr:lang="en" attr:dir="ltr" attr:data-theme="light" />
