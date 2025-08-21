@@ -1,6 +1,6 @@
 use leptos::prelude::*;
 
-use crate::state::recent_files::RecentFiles;
+use crate::{components::recent_file::RecentFile, state::recent_files::RecentFiles};
 
 #[component]
 pub fn Sidebar() -> impl IntoView {
@@ -14,7 +14,16 @@ pub fn Sidebar() -> impl IntoView {
                         .files
                         .get()
                         .into_iter()
-                        .map(|filename| view! { <li>{filename}</li> })
+                        .enumerate()
+                        .map(|(index, filename)| {
+                            view! {
+                                <RecentFile
+                                    filename=filename
+                                    index=index
+                                    recent_files=recent.clone()
+                                />
+                            }
+                        })
                         .collect_view()
                 }}
             </ul>
