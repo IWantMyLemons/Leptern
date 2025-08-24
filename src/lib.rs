@@ -11,7 +11,8 @@ mod state;
 // Top-Level pages
 use crate::{
     pages::{not_found::NotFound, reader::Reader},
-    state::{current_file::CurrentFile, recent_files::RecentFiles},
+    repositories::idb_database::attach_db,
+    state::{current_file::CurrentFile, idb_context::IdbContext, recent_files::RecentFiles},
 };
 
 /// An app router which renders the homepage and handles 404's
@@ -20,11 +21,16 @@ pub fn App() -> impl IntoView {
     // Provides context that manages stylesheets, titles, meta tags, etc.
     provide_meta_context();
 
-    // Provides context for managing recent files
     provide_context(RecentFiles::new());
-
-    // Provides context for managing the current file
     provide_context(CurrentFile::new());
+    provide_context(IdbContext::new());
+
+    // Attach database onto context as soon as possible
+    {
+        let db = use_context::<IdbContext>().unwrap();
+        attach_db(db.db);
+        log::info!("attached db :3");
+    }
 
     view! {
         <Html attr:lang="en" attr:dir="ltr" attr:data-theme="light" />
