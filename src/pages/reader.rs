@@ -1,7 +1,7 @@
 use leptos::prelude::*;
 
 use crate::{
-    components::{file_browser::FileBrowser, file_reader::FileReader, sidebar::Sidebar},
+    components::{file_reader::FileReader, sidebar::Sidebar},
     state::current_file::CurrentFile,
 };
 
@@ -34,7 +34,7 @@ pub fn Reader() -> impl IntoView {
                 <div class="pdf-reader">
                     {move || match current_file.filename.get() {
                         Some(filename) => view! { <FileReader filename=filename /> }.into_any(),
-                        None => view! { <FileBrowser /> }.into_any(),
+                        None => view! { <p>"Add/Open a file to get started!"</p> }.into_any(),
                     }}
                 </div>
             </div>

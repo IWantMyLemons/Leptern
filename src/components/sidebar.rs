@@ -1,6 +1,9 @@
 use leptos::prelude::*;
 
-use crate::{components::recent_file::RecentFile, state::recent_files::RecentFiles};
+use crate::{
+    components::{file_browser::FileBrowser, recent_file::RecentFile},
+    state::recent_files::RecentFiles,
+};
 
 #[component]
 pub fn Sidebar() -> impl IntoView {
@@ -8,6 +11,7 @@ pub fn Sidebar() -> impl IntoView {
 
     view! {
         <div class="sidebar">
+            <FileBrowser />
             <ul class="recents">
                 {move || {
                     recent
