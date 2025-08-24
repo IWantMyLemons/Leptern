@@ -18,7 +18,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1384d3fe1eecb464229fcf6eebb72306591c56bf27b373561489458a7c73027d"
 dependencies = [
  "futures",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
  "wasm-bindgen-futures",
 ]
 
@@ -160,7 +160,7 @@ checksum = "fd8bbfdadf2f8999c6e404697bc08016dce4a3d77dec465b36c9a0652fdb3327"
 dependencies = [
  "serde",
  "serde_json",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
 ]
 
 [[package]]
@@ -766,6 +766,7 @@ dependencies = [
  "leptos_meta",
  "leptos_router",
  "log",
+ "thiserror 2.0.16",
  "wasm-bindgen",
  "wasm-bindgen-test",
  "web-sys",
@@ -801,7 +802,7 @@ dependencies = [
  "server_fn",
  "slotmap",
  "tachys",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
  "throw_error",
  "typed-builder",
  "typed-builder-macro",
@@ -820,7 +821,7 @@ dependencies = [
  "config",
  "regex",
  "serde",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
  "typed-builder",
 ]
 
@@ -913,7 +914,7 @@ dependencies = [
  "rustc_version",
  "send_wrapper",
  "tachys",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
  "url",
  "wasm-bindgen",
  "web-sys",
@@ -1047,7 +1048,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ed0423ff9973dea4d6bd075934fdda86ebb8c05bdf9d6b0507067d4a1226371d"
 dependencies = [
  "serde",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
 ]
 
 [[package]]
@@ -1270,7 +1271,7 @@ dependencies = [
  "send_wrapper",
  "serde",
  "slotmap",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
  "web-sys",
 ]
 
@@ -1354,7 +1355,7 @@ dependencies = [
  "quote",
  "syn",
  "syn_derive",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
 ]
 
 [[package]]
@@ -1454,7 +1455,7 @@ checksum = "f3faaf9e727533a19351a43cc5a8de957372163c7d35cc48c90b75cdda13c352"
 dependencies = [
  "percent-encoding",
  "serde",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
 ]
 
 [[package]]
@@ -1489,7 +1490,7 @@ dependencies = [
  "serde_json",
  "serde_qs",
  "server_fn_macro_default",
- "thiserror 2.0.14",
+ "thiserror 2.0.16",
  "throw_error",
  "url",
  "wasm-bindgen",
@@ -1647,11 +1648,11 @@ dependencies = [
 
 [[package]]
 name = "thiserror"
-version = "2.0.14"
+version = "2.0.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0b0949c3a6c842cbde3f1686d6eea5a010516deb7085f79db747562d4102f41e"
+checksum = "3467d614147380f2e4e374161426ff399c91084acd2363eaf549172b3d5e60c0"
 dependencies = [
- "thiserror-impl 2.0.14",
+ "thiserror-impl 2.0.16",
 ]
 
 [[package]]
@@ -1667,9 +1668,9 @@ dependencies = [
 
 [[package]]
 name = "thiserror-impl"
-version = "2.0.14"
+version = "2.0.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cc5b44b4ab9c2fdd0e0512e6bece8388e214c0749f5862b114cc5b7a25daf227"
+checksum = "6c5e1be1c48b9172ee610da68fd9cd2770e7a4056cb3fc98710ee6906f0c7960"
 dependencies = [
  "proc-macro2",
  "quote",
