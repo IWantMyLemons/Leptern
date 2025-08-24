@@ -66,9 +66,19 @@ button {
   flex-direction: row;
   .sidebar {
     background-color: $theme-surface;
-    width: 250px;
+    width: 300px;
   }
   .pdf-reader {
     flex-grow: 1;
+  }
+  .recents {
+    padding-left: 10px;
+  }
+  .recent-file {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
   }
 }
