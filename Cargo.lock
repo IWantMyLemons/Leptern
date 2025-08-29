@@ -768,6 +768,7 @@ dependencies = [
  "log",
  "thiserror 2.0.16",
  "wasm-bindgen",
+ "wasm-bindgen-futures",
  "wasm-bindgen-test",
  "web-sys",
 ]

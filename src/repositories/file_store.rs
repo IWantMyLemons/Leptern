@@ -1,7 +1,7 @@
 use leptos::prelude::*;
 use leptos::wasm_bindgen::prelude::*;
 use web_sys::js_sys::ArrayBuffer;
-use web_sys::{Event, File, FileReader, IdbDatabase, IdbTransactionMode};
+use web_sys::{Event, File, FileReader, IdbDatabase, IdbRequest, IdbTransactionMode};
 
 /// Saves a file to the browser's indexeddb with it's filename as a key and array of bytes as a value
 pub fn save_file_to_idb(db: IdbDatabase, file: File) {
@@ -31,6 +31,27 @@ pub fn save_file_to_idb(db: IdbDatabase, file: File) {
 }
 
 // Loads a file from the browser's indexeddb
-// pub fn load_file_from_idb(filename: String) {
-//     todo!()
-// }
+pub fn load_file_from_idb(
+    db: IdbDatabase,
+    filename: String,
+    output_signal: WriteSignal<Option<ArrayBuffer>, LocalStorage>,
+) {
+    let request = db
+        .transaction_with_str_and_mode("files", IdbTransactionMode::Readonly)
+        .and_then(|transaction| transaction.object_store("files"))
+        .and_then(|store| store.get(&filename.clone().into()))
+        .unwrap();
+
+    let on_success = Closure::<dyn FnMut(_)>::new(move |ev: Event| {
+        let data = event_target::<IdbRequest>(&ev)
+            .result()
+            .unwrap()
+            .dyn_into::<ArrayBuffer>()
+            .unwrap();
+
+        log::info!("Loaded {filename} :3");
+        output_signal.set(Some(data));
+    });
+    request.set_onsuccess(Some(on_success.as_ref().unchecked_ref()));
+    on_success.forget();
+}

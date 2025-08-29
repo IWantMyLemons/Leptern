@@ -3,7 +3,7 @@
   <head>
     <!-- Add a plain CSS file: see https://trunkrs.dev/assets/#css -->
     <!-- If using Tailwind with Leptos CSR, see https://trunkrs.dev/assets/#tailwind instead-->
-    <link data-trunk rel="scss" href="public/styles.scss" />
+    <!-- <link data-trunk rel="scss" href="public/styles.scss" /> -->
 
     <!-- Include favicon in dist output: see https://trunkrs.dev/assets/#icon -->
     <link data-trunk rel="icon" href="public/favicon.ico" />
@@ -13,7 +13,19 @@
 
     <!-- Include images in dist output: see https://trunkrs.dev/assets/#icon -->
     <link data-trunk rel="copy-dir" href="public/images/" />
+
+    <!-- Added pdfjs to public -->
+    <link data-trunk rel="copy-dir" href="public/pdfjs-dist/" />
   </head>
 
-  <body></body>
+  <body>
+    <!-- Load pdfjs and it's worker -->
+    <script type="module">
+      import * as pdfjsLib from "/pdfjs-dist/build/pdf.mjs";
+
+      // Tell PDF.js where to find the worker
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "/pdfjs-dist/build/pdf.worker.mjs";
+    </script>
+  </body>
 </html>

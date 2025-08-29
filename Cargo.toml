@@ -14,6 +14,8 @@ console_log = "1"
 log = "0.4"
 console_error_panic_hook = "0.1"
 thiserror = "2.0.16"
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4.50"
 
 # utils
 # strum = { version = "0.25", features = ["derive", "strum_macros"] }
@@ -34,6 +36,7 @@ features = [
     "IdbTransaction",
     "IdbTransactionMode",
     "Storage",
+    "TextDecoder",
     "Window",
 ]
 
