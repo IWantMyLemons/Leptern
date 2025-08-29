@@ -24,8 +24,5 @@ pub fn PdfRenderer(data: ArrayBuffer) -> impl IntoView {
             first_page.render(render_context);
         });
     });
-    view! {
-        "this is a pdf..."
-        <canvas node_ref=canvas_element></canvas>
-    }
+    view! { <canvas node_ref=canvas_element></canvas> }
 }
