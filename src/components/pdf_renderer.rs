@@ -12,7 +12,8 @@ pub fn PdfRenderer(data: ArrayBuffer) -> impl IntoView {
             let first_page = document.fetch_page(1).await.unwrap();
 
             let canvas_context = canvas.get_context("2d").unwrap().unwrap();
-            let viewport_opts = PdfViewportOpts::from_scale(1.5);
+            let device_pixel_ratio = window().device_pixel_ratio();
+            let viewport_opts = PdfViewportOpts::from_scale(device_pixel_ratio);
             let viewport = first_page.get_viewport(viewport_opts);
 
             let render_context = PdfRenderContext::new(&canvas_context, &viewport);
@@ -24,5 +25,5 @@ pub fn PdfRenderer(data: ArrayBuffer) -> impl IntoView {
             first_page.render(render_context);
         });
     });
-    view! { <canvas node_ref=canvas_element></canvas> }
+    view! { <canvas class="pdf-renderer" node_ref=canvas_element></canvas> }
 }
